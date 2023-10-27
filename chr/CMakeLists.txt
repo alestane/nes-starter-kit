@@ -6,7 +6,8 @@ set(CHR_ASM ${CMAKE_CURRENT_SOURCE_DIR}/chr.s)
 set(CONVERTER ${CMAKE_CURRENT_SOURCE_DIR}/make_chr.py)
 
 # Create commands to convert PNGs to CHRs
-set(CHR_FILES "")
+file(GLOB CHR_FILES ${CMAKE_CURRENT_SOURCE_DIR}/*.chr)
+file(COPY ${CHR_FILES} DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/)
 file(GLOB PNG_FILES ${CMAKE_CURRENT_SOURCE_DIR}/*.png)
 foreach(PNG_FILE ${PNG_FILES})
     get_filename_component(PNG_NAME ${PNG_FILE} NAME_WE)
